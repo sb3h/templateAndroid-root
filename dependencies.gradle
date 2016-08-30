@@ -1,0 +1,80 @@
+ext {
+  androidPlugin = 'com.android.tools.build:gradle:2.1.2'
+  minSdkVersion = 14
+  targetSdkVersion = 24
+  compileSdkVersion = 24
+  buildToolsVersion = '24.0.0'
+
+  supportV = '23.1.1'
+
+  //v4
+  supportV4='com.android.support:support-v4:%s'.replace("%s",supportV)
+  //v7
+  supportAppcompat='com.android.support:appcompat-v7:%s'.replace("%s",supportV)
+  supportCardview='com.android.support:cardview-v7:%s'.replace("%s",supportV)
+  supportGridlayout='com.android.support:gridlayout-v7:%s'.replace("%s",supportV)
+  supportMediarouter='com.android.support:mediarouter-v7:%s'.replace("%s",supportV)
+  supportPalette='com.android.support:palette-v7:%s'.replace("%s",supportV)
+  supportPreferenceV7='com.android.support:preference-v7:%s'.replace("%s",supportV)
+  supportRecyclerview='com.android.support:recyclerview-v7:%s'.replace("%s",supportV)
+
+  //v13
+  supportV13='com.android.support:support-v13:%s'.replace("%s",supportV)
+  //v14
+  supportPreferenceV14='com.android.support:preference-v14:%s'.replace("%s",supportV)
+
+  //v17
+  supportLeanback='com.android.support:leanback-v17:%s'.replace("%s",supportV)
+  supportPreferenceLeanback='com.android.support:preference-leanback-v17:%s'.replace("%s",supportV)
+
+  //other
+  supportCustomtabs='com.android.support:customtabs:%s'.replace("%s",supportV)
+  supportDesign='com.android.support:design:%s'.replace("%s",supportV)
+  supportMultidex='com.android.support:multidex:1.0.1'
+  supportMultidexInstrumentation='com.android.support:multidex-instrumentation:1.0.1'
+  supportPercent='com.android.support:percent:%s'.replace("%s",supportV)
+  supportRecommendation='com.android.support:recommendation:%s'.replace("%s",supportV)
+  supportAnimatedVectorDrawable='com.android.support:animated-vector-drawable:%s'.replace("%s",supportV)
+  supportVectorDrawable='com.android.support:support-vector-drawable:%s'.replace("%s",supportV)
+
+  //android test runner and rules
+  runnerAndRulesV = '0.4.1'
+  supportTestRunner = 'com.android.support.test:runner:%s'.replace("%s",runnerAndRulesV)
+  supportTestRules = 'com.android.support.test:rules:%s'.replace("%s",runnerAndRulesV)
+
+  //android test espresso
+  espressoV = '2.2.2'
+  supportTestEspresso = 'com.android.support.test.espresso:espresso-core:%s'.replace("%s",espressoV)
+  supportTestEspressoContrib = 'com.android.support.test.espresso:espresso-contrib:%s'.replace("%s",espressoV)
+
+  //java test
+  junit = 'junit:junit:4.12'
+  truth = 'com.google.truth:truth:0.27'
+
+  //image loader
+  imageloader =
+//  'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
+//  'com.squareup.picasso:picasso:2.5.2'
+//  'com.facebook.fresco:fresco:0.12.0'
+  'com.github.bumptech.glide:glide:3.7.0'
+
+  //smack-android
+  smackV = '4.1.7'
+  smackAndroid = 'org.igniterealtime.smack:smack-android:%s'.replace("%s",smackV)
+  smackAndroidExtensions = 'org.igniterealtime.smack:smack-android-extensions:%s'.replace("%s",smackV)
+  smackTcp = 'org.igniterealtime.smack:smack-tcp:%s'.replace("%s",smackV)
+
+  //rx
+  rxJava = 'io.reactivex:rxjava:1.1.0'
+  rxAndroid = 'io.reactivex:rxandroid:1.1.0'
+  //lambda format
+  retrolambda = 'me.tatarka:gradle-retrolambda:3.2.5'
+  /*
+  condition:
+    mavenCentral()
+    apply plugin: 'me.tatarka.retrolambda'
+  */
+
+
+  javaParser = 'com.github.javaparser:javaparser-core:2.1.0'
+}
