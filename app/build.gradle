@@ -5,7 +5,8 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     lintOptions {
-        lintConfig file('lint.xml')
+//        lintConfig file('lint.xml')
+        abortOnError false
     }
 
     compileOptions {
@@ -13,7 +14,57 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
 
-    defaultConfig {
+    //packaging--------------------------------------- start
+    signingConfigs {
+        debug {
+            storeFile file("other/package/debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+        release {
+            storeFile file("other/package/debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            signingConfig signingConfigs.release
+
+        }
+    }
+
+    /**
+     *build variants的打包规则
+     * 1.有哪些渠道productFlavors
+     * 2.有哪些用什么签名打包（一般指打针对debug,还是release或者其他更多自定义）
+     * */
+
+    /**不同渠道打包设置，添加一个渠道，在build variants就出多一组bug和release*/
+    productFlavors {
+        brightoil {}
+        googleplay {}
+        tencent {}
+        wandoujia {}
+        _360 {}
+        baidu {}
+        xiaomi {}
+        huawei {}
+        umeng {}
+    }
+
+    /**
+     * productFlavors.all指遍历productFlavors集合
+     * flavor -> 指集合中的元素变量
+     * 可以使用以下的方式替换defaultConfig的方式
+     * */
+    productFlavors.all { flavor ->
+        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         multiDexEnabled true
@@ -21,6 +72,12 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+
+    //packaging--------------------------------------- end
+
+
+
     dataBinding {
         enabled true
     }
