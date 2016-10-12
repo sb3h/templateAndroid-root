@@ -22,6 +22,7 @@ android {
             keyAlias "androiddebugkey"
             keyPassword "android"
         }
+
         release {
             storeFile file("other/package/debug.keystore")
             storePassword "android"
@@ -32,6 +33,11 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            buildConfigField 'String','API_SERVER_URL','"http://server.api.me1/"'
+            resValue "string", "resValue_buildType", "this is from resValue_debug"
+        }
+        qa {
+            signingConfig signingConfigs.release
             buildConfigField 'String','API_SERVER_URL','"http://server.api.me1/"'
             resValue "string", "resValue_buildType", "this is from resValue_debug"
         }

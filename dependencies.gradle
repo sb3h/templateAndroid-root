@@ -1,5 +1,5 @@
 ext {
-  androidPlugin = "com.android.tools.build:gradle:2.2.0"
+  androidPlugin = "com.android.tools.build:gradle:2.2.1"
   minSdkVersion = 14
   targetSdkVersion = 24
   compileSdkVersion = 24
@@ -78,8 +78,8 @@ ext {
   smackTcp = "org.igniterealtime.smack:smack-tcp:%s".replace("%s",smackV)
 
   //rx
-  rxJava = "io.reactivex:rxjava:1.1.0"
-  rxAndroid = "io.reactivex:rxandroid:1.1.0"
+  rxJava = "io.reactivex:rxjava:1.2.1"
+  rxAndroid = "io.reactivex:rxandroid:1.2.1"
   //lambda format
   retrolambda = "me.tatarka:gradle-retrolambda:3.2.5"
   /*
