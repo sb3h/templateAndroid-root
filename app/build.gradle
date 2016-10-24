@@ -89,8 +89,8 @@ android {
         versionName "1.0"
 
         //ProductFlavor
-        minSdkVersion "${minSdkVersion}"
-        targetSdkVersion "${targetSdkVersion}"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
     }
 
 
