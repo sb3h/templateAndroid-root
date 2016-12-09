@@ -1,5 +1,17 @@
 apply plugin: 'com.android.application'
 
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile "${supportV4}"//使用project中的变量，就不用以前的project.ext这样来获取变量值
+//    compile "${supportCustomtabs}"
+
+//    compile project(':moduleName')
+//    compile(name:'aarFileName', ext:'aar')
+
+//    testCompile "${junit}"
+//    androidTestCompile "${supportTestEspresso}"
+}
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -14,6 +26,22 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
 
+    //ProductFlavor-->DefaultProductFlavor-->BaseConfigImpl
+    defaultConfig{
+        //BaseConfigImpl
+        multiDexEnabled true
+        //manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]//一般不在这里写
+
+        //DefaultProductFlavor
+        applicationId "com.example.support"
+        versionCode 1
+        versionName "1.0"
+
+        //ProductFlavor
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+    }
+/* 为了构建demo加速，以下的配置可以不用，正式项目会相应配置
     //packaging--------------------------------------- start
     signingConfigs {
         debug {
@@ -49,13 +77,10 @@ android {
         }
     }
 
-    /**
-     *build variants的打包规则
-     * 1.有哪些渠道productFlavors
-     * 2.有哪些用什么签名(buildTypes)打包（一般指打针对debug,还是release或者其他更多自定义）
-     * */
-
-    /**不同渠道打包设置，添加一个渠道，在build variants就出多一组bug和release*/
+//     *build variants的打包规则
+//     * 1.有哪些渠道productFlavors
+//     * 2.有哪些用什么签名(buildTypes)打包（一般指打针对debug,还是release或者其他更多自定义）
+//    不同渠道打包设置，添加一个渠道，在build variants就出多一组bug和release
     productFlavors {
         brightoil {}
         googleplay {}
@@ -68,32 +93,13 @@ android {
         umeng {}
     }
 
-    /**
-     * productFlavors.all指遍历productFlavors集合
-     * flavor -> 指集合中的元素变量
-     * 可以使用以下的方式替换defaultConfig的方式
-     * */
+//     * productFlavors.all指遍历productFlavors集合
+//     * flavor -> 指集合中的元素变量
+//     * 可以使用以下的方式替换defaultConfig的方式
     productFlavors.all {baseConfigImpl ->
         baseConfigImpl.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]//
 
     }
-    //ProductFlavor-->DefaultProductFlavor-->BaseConfigImpl
-    defaultConfig{
-        //BaseConfigImpl
-        multiDexEnabled true
-        //manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]//一般不在这里写
-
-        //DefaultProductFlavor
-        applicationId "com.example.support"
-        versionCode 1
-        versionName "1.0"
-
-        //ProductFlavor
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-    }
-
-
     //packaging--------------------------------------- end
 
 
@@ -107,7 +113,7 @@ android {
         javaMaxHeapSize "2g"
     }
 
-    /*这些协议文件一定要包括的，不然在打包时，会突然叫你加上的*/
+//    这些协议文件一定要包括的，不然在打包时，会突然叫你加上的
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/NOTICE'
@@ -115,20 +121,10 @@ android {
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
     }
+*/
+
+
 
 }
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile "${supportV4}"//使用project中的变量，就不用以前的project.ext这样来获取变量值
-//    compile "${supportCustomtabs}"
-
-//    compile project(':moduleName')
-//    compile(name:'aarFileName', ext:'aar')
-
-//    testCompile "${junit}"
-//    androidTestCompile "${supportTestEspresso}"
-
-
-}
