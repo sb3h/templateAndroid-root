@@ -15,7 +15,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main_activtity);
 		
 		TextView tv = (TextView) findViewById(R.id.tv);
-		tv.setText(BuildConfig.API_SERVER_URL+" " + getString(R.string.resValue_buildType));
+		tv.setText("123");
 	}
 	
 	public void leftBtnClick(View v) {
